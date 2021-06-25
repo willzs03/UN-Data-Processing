@@ -7,5 +7,3 @@ r = requests.get(url, allow_redirects=True)
 # print(r.headers.get('content-type'))
 
 open('MICS_UNICEF_SurveyData.csv', 'wb').write(r.content)
-
-# testing for github
