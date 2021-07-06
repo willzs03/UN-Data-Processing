@@ -10,12 +10,6 @@ ws = wb.active
 ws.delete_cols(2)
 ws.delete_cols(4, 3)
 
-# Rename column titles for consistency
-ws['A1'] = 'Title'
-ws['B1'] = 'Country'
-ws['C1'] = 'Start Year'
-ws['D1'] = 'End Year'
-
 # Format columns C1 (Start Year) and D1 (End Year) appropriately
 for cell in ws['C']:
     currentCol = get_column_letter(cell.column) + str(cell.row)
@@ -35,6 +29,12 @@ for cell in ws['C']:
 for cell in ws['D']:
     nextCol = get_column_letter(cell.column + 1) + str(cell.row)
     ws[nextCol] = 'MICS_UNICEF'
+    
+# Rename column titles for consistency
+ws['A1'] = 'Title'
+ws['B1'] = 'Country'
+ws['C1'] = 'Start Year'
+ws['D1'] = 'End Year'
 ws['E1'] = 'Source'
 
 # Save changes to a new file
