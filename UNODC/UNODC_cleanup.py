@@ -57,11 +57,11 @@ ws['B1'].font = Font(bold=False)
 ws['C1'].font = Font(bold=False)
 
 # Rename column titles for consistency
-ws['A1'] = 'Title'
-ws['B1'] = 'Country'
-ws['C1'] = 'Start Year'
-ws['D1'] = 'End Year'
-ws['E1'] = 'Source'
+ws['A1'] = 'nation'
+ws['B1'] = 'title'
+ws['C1'] = 'year_start'
+ws['D1'] = 'year_end'
+ws['E1'] = 'source'
 
 # Save changes to a new file
 wb.save("UNODC_cleaned.xlsx")

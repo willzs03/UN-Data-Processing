@@ -7,6 +7,7 @@ test = json.loads(test.text)
 
 n = test['result']['found']
 
+
 page_size = 100
 
 pages = math.ceil(n/page_size)
@@ -25,18 +26,33 @@ for p in range(pages):
     print(f'Processing page {p}')
 
 # Write filtered TODOs to file.
-with open("data/catalog.json", "w") as data_file:
+with open("catalog.json", "w") as data_file:
     json.dump(catalog, data_file, indent=2)
 
+print("finished first write")
+
 metadata = []
+print(len(catalog))
+counter = -1
 for s in catalog:
-    id = s['id']
-    test = requests.get('http://catalog.ihsn.org/metadata/export/'+str(id)+'/json')
-    test = json.loads(test.text)
 
-    metadata.append(test)
+    # error with uniqueid == 8478
+    uniqueid = s['id']
+    counter += 1
+    print(counter, uniqueid)
+    if uniqueid == 8478:
+        pass
+    else:
+        test = requests.get('http://catalog.ihsn.org/metadata/export/' + str(uniqueid) + '/json')
+        test = json.loads(test.text)
+        metadata.append(test)
 
+
+
+
+print("finished catalog loop")
 
 # Write filtered TODOs to file.
-with open("data/metadata.json", "w") as data_file:
+with open("metadata.json", "w") as data_file:
     json.dump(metadata, data_file, indent=2)
+print("finished second write")
