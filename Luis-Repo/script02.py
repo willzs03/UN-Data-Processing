@@ -12,10 +12,10 @@ n = len(catalog)
 frame = pd.DataFrame()
 for idx, s in enumerate(catalog):
     uniqueid = s['id']
-    if uniqueid == 8478:
+    i = requests.get('http://catalog.ihsn.org/metadata/export/' + str(uniqueid) + '/json')
+    if i.status_code == 404:
         pass
     else:
-        i = requests.get('http://catalog.ihsn.org/metadata/export/' + str(uniqueid) + '/json')
         i = json.loads(i.text)
         i = json_normalize(i)
         i = i.reset_index(drop=True)

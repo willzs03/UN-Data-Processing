@@ -33,20 +33,18 @@ print("finished first write")
 
 metadata = []
 print(len(catalog))
-counter = -1
+counter = 0
 for s in catalog:
-
     # error with uniqueid == 8478
     uniqueid = s['id']
-    counter += 1
-    print(counter, uniqueid)
-    if uniqueid == 8478:
-        pass
+    item = requests.get('http://catalog.ihsn.org/metadata/export/' + str(uniqueid) + '/json')
+    if item.status_code != 404:
+        itemJSON = json.loads(item.text)
+        metadata.append(itemJSON)
     else:
-        test = requests.get('http://catalog.ihsn.org/metadata/export/' + str(uniqueid) + '/json')
-        test = json.loads(test.text)
-        metadata.append(test)
-
+        pass
+    print(counter)
+    counter += 1
 
 
 
