@@ -26,4 +26,4 @@ for idx, s in enumerate(catalog):
             frame = pd.concat([frame, i], axis=0)
         print(f'Processed {idx} out of {n}')
 
-frame.to_excel("output.xlsx")
+frame.to_excel("IHSN_Metadata.xlsx")

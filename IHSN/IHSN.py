@@ -2,7 +2,7 @@ import requests
 
 url_ihsn = 'http://catalog.ihsn.org/catalog/export/csv?ps=10000&collection[]=central'
 
-# Download IHSN
+# Download IHSN file up to 10000 entries
 req = requests.get(url_ihsn)
 url_content = req.content
 csv_file = open('IHSN_SurveyData.csv', 'wb')
